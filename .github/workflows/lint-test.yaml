@@ -1,0 +1,67 @@
+name: Lint and test charts
+
+on: pull_request
+
+jobs:
+  yamllint:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Install Helm
+      run: |
+        cd /tmp
+        curl -fsSLo get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+        chmod 700 get_helm.sh
+        ./get_helm.sh
+    - name: Generate helm templates
+      run: |
+        cd charts
+        for chart in *; do
+          helm dependency build $chart
+          mkdir -p /tmp/charts/$chart
+          helm template $chart $chart \
+            --values $chart/ci/linter-values.yaml \
+            --output-dir /tmp/charts/$chart
+        done
+    - name: Install YAMLlint
+      run: sudo apt-get -y install yamllint
+    - name: Lint the templates
+      run: |
+        set -euo pipefail
+        cat > .yamllint <<EOF
+        extends: default
+        rules:
+          indentation:
+            indent-sequences: consistent
+          line-length:
+            level: warning
+        EOF
+        yamllint -f parsable /tmp/charts | awk -F: '{print; system("sed \"" $2 "q;d\" " $1)}'
+
+  lint-test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: "0"
+    - name: Set up chart-testing dependencies
+      run: sudo apt-get -y install python3-wheel
+    - name: Set up chart-testing
+      uses: helm/chart-testing-action@v2.0.1
+    - name: Run chart-testing (list-changed)
+      id: list-changed
+      run: |
+        changed=$(ct list-changed --config ./default.ct.yaml)
+        if [[ "$changed" ]]; then
+          echo "::set-output name=changed::true"
+          echo "$changed"
+        fi
+    - name: Run chart-testing (lint)
+      run: ct lint --config ./default.ct.yaml
+    - name: Create kind cluster
+      uses: helm/kind-action@v1.1.0
+      if: steps.list-changed.outputs.changed == 'true'
+    - name: Run chart-testing (install)
+      run: ct install --config ./default.ct.yaml
