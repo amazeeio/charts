@@ -1,4 +1,4 @@
-# Lagoon Helm charts
+# amazee.io Helm charts
 
 This repository contains [Helm](https://helm.sh/) charts maintained by [amazee.io](https://amazee.io/).
 
