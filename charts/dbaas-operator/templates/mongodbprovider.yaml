@@ -1,7 +1,7 @@
-{{- range $providerName, $providerConfig := .Values.postgresqlProviders }}
+{{- range $providerName, $providerConfig := .Values.mongodbProviders }}
 ---
-apiVersion: postgres.amazee.io/v1
-kind: PostgreSQLProvider
+apiVersion: mongodb.amazee.io/v1
+kind: MongoDBProvider
 metadata:
   name: {{ include "dbaas-operator.fullname" $ }}-{{ $providerName }}
   labels:
@@ -13,4 +13,8 @@ spec:
   port: {{ required (printf "port is required for %s" $providerName) $providerConfig.port | quote }}
   user: {{ required (printf "user is required for %s" $providerName) $providerConfig.user | quote }}
   type: {{ $providerConfig.type | default "generic" | quote }}
+  auth:
+    mechanism: {{ required (printf "auth.mechanism is required for %s" $providerName) $providerConfig.auth.mechanism | quote }}
+    source: {{ required (printf "auth.source is required for %s" $providerName) $providerConfig.auth.source | quote }}
+    tls: {{ required (printf "auth.tls (bool) is required for %s" $providerName) $providerConfig.auth.tls }}
 {{- end }}
