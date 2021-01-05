@@ -45,6 +45,31 @@ postgresqlProviders: {}
   #   password: password
   #   port: '3306'
 
+# this is a list of providers that the dbaas operator uses to provision
+# mongodb services for projects
+mongodbProviders: {}
+  # production:
+  #   environment: production
+  #   hostname: 172.17.0.1.nip.io
+  #   password: password
+  #   port: '3306'
+  #   user: root
+  #   auth:
+  #     mechanism: SCRAM-SHA-1
+  #     source: admin
+  #     tls: false
+
+  # development:
+  #   environment: development
+  #   hostname: 172.17.0.1.nip.io
+  #   password: password
+  #   port: '3306'
+  #   user: root
+  #   auth:
+  #     mechanism: SCRAM-SHA-1
+  #     source: admin
+  #     tls: false
+
 extraArgs:
 - "--metrics-addr=127.0.0.1:8080"
 - "--enable-leader-election=true"
