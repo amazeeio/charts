@@ -1,0 +1,29 @@
+mariadbProviders:
+  development:
+    environment: development
+    hostname: 172.17.0.1.nip.io
+    readReplicaHostnames:
+    - 172.17.0.1.nip.io
+    password: password
+    port: '3306'
+    user: root
+
+postgresqlProviders:
+  development:
+    environment: development
+    hostname: 172.17.0.1.nip.io
+    user: root
+    password: password
+    port: '3306'
+
+mongodbProviders:
+  development:
+    environment: development
+    hostname: 172.17.0.1.nip.io
+    password: password
+    port: '3306'
+    user: root
+    auth:
+      mechanism: SCRAM-SHA-1
+      source: admin
+      tls: false
