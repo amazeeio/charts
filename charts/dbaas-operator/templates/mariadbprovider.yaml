@@ -1,0 +1,20 @@
+{{- range $providerName, $providerConfig := .Values.mariadbProviders }}
+---
+apiVersion: mariadb.amazee.io/v1
+kind: MariaDBProvider
+metadata:
+  name: {{ include "dbaas-operator.fullname" $ }}-{{ $providerName }}
+  labels:
+    {{- include "dbaas-operator.labels" $ | nindent 4 }}
+spec:
+  environment: {{ required (printf "environment is required for %s" $providerName) $providerConfig.environment | quote }}
+  hostname: {{ required (printf "hostname is required for %s" $providerName) $providerConfig.hostname | quote }}
+  {{- with $providerConfig.readReplicaHostnames }}
+  readReplicaHostnames:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  password: {{ required (printf "password is required for %s" $providerName) $providerConfig.password | quote }}
+  port: {{ required (printf "port is required for %s" $providerName) $providerConfig.port | quote }}
+  user: {{ required (printf "user is required for %s" $providerName) $providerConfig.user | quote }}
+  type: {{ $providerConfig.type | default "generic" | quote }}
+{{- end }}

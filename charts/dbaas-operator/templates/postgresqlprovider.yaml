@@ -1,0 +1,16 @@
+{{- range $providerName, $providerConfig := .Values.postgresqlProviders }}
+---
+apiVersion: postgres.amazee.io/v1
+kind: PostgreSQLProvider
+metadata:
+  name: {{ include "dbaas-operator.fullname" $ }}-{{ $providerName }}
+  labels:
+    {{- include "dbaas-operator.labels" $ | nindent 4 }}
+spec:
+  environment: {{ required (printf "environment is required for %s" $providerName) $providerConfig.environment | quote }}
+  hostname: {{ required (printf "hostname is required for %s" $providerName) $providerConfig.hostname | quote }}
+  password: {{ required (printf "password is required for %s" $providerName) $providerConfig.password | quote }}
+  port: {{ required (printf "port is required for %s" $providerName) $providerConfig.port | quote }}
+  user: {{ required (printf "user is required for %s" $providerName) $providerConfig.user | quote }}
+  type: {{ $providerConfig.type | default "generic" | quote }}
+{{- end }}

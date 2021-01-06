@@ -1,0 +1,120 @@
+# this is a list of providers that the dbaas operator uses to provision
+# mariadb services for projects
+mariadbProviders: {}
+  # production:
+  #   environment: production
+  #   hostname: 172.17.0.1.nip.io
+  #   readReplicaHostnames:
+  #   - 172.17.0.1.nip.io
+  #   password: password
+  #   port: '3306'
+  #   user: root
+
+  # development:
+  #   environment: development
+  #   hostname: 172.17.0.1.nip.io
+  #   readReplicaHostnames:
+  #   - 172.17.0.1.nip.io
+  #   password: password
+  #   port: '3306'
+  #   user: root
+
+  # development-azure:
+  #   environment: development
+  #   hostname: azure-hostname.172.17.0.1.nip.io
+  #   readReplicaHostnames:
+  #   - azure-hostname.172.17.0.1.nip.io
+  #   password: password
+  #   port: '3306'
+  #   user: root@azure-hostname
+  #   type: azure
+
+# this is a list of providers that the dbaas operator uses to provision
+# postgresql services for projects
+postgresqlProviders: {}
+  # production:
+  #   environment: production
+  #   hostname: 172.17.0.1.nip.io
+  #   password: password
+  #   port: '3306'
+  #   user: root
+
+  # development:
+  #   environment: development
+  #   hostname: 172.17.0.1.nip.io
+  #   password: password
+  #   port: '3306'
+
+# this is a list of providers that the dbaas operator uses to provision
+# mongodb services for projects
+mongodbProviders: {}
+  # production:
+  #   environment: production
+  #   hostname: 172.17.0.1.nip.io
+  #   password: password
+  #   port: '3306'
+  #   user: root
+  #   auth:
+  #     mechanism: SCRAM-SHA-1
+  #     source: admin
+  #     tls: false
+
+  # development:
+  #   environment: development
+  #   hostname: 172.17.0.1.nip.io
+  #   password: password
+  #   port: '3306'
+  #   user: root
+  #   auth:
+  #     mechanism: SCRAM-SHA-1
+  #     source: admin
+  #     tls: false
+
+extraArgs:
+- "--metrics-addr=127.0.0.1:8080"
+- "--enable-leader-election=true"
+
+image:
+  repository: amazeeio/dbaas-operator
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+
+serviceAccount:
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 8443
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+# this sidecar runs in the same pod as dbaas-operator
+kubeRBACProxy:
+  image:
+    repository: gcr.io/kubebuilder/kube-rbac-proxy
+    pullPolicy: IfNotPresent
+    tag: v0.4.1
+
+  securityContext: {}
+
+  resources: {}
