@@ -1,0 +1,4 @@
+fastly:
+  apiToken: 'a8ebfff7e54ebc786'
+  tlsConfigID: '42cd671d142d18bba26'
+  clusterName: 'region1'
