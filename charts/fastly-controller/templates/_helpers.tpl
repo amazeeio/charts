@@ -4,7 +4,7 @@ Expand the name of the chart.
 */}}
 {{- define "fastly-controller.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" -}}
-{{- end -}}
+{{- end }}
 
 {{/*
 Create a default fully qualified app name.
@@ -20,16 +20,16 @@ If release name contains chart name it will be used as a full name.
 {{- .Release.Name | trunc 63 | trimSuffix "-" -}}
 {{- else -}}
 {{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" -}}
-{{- end -}}
-{{- end -}}
-{{- end -}}
+{{- end }}
+{{- end }}
+{{- end }}
 
 {{/*
 Create chart name and version as used by the chart label.
 */}}
 {{- define "fastly-controller.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
-{{- end -}}
+{{- end }}
 
 {{/*
 Common labels
@@ -41,7 +41,7 @@ helm.sh/chart: {{ include "fastly-controller.chart" . }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
-{{- end -}}
+{{- end }}
 
 {{/*
 Selector labels
@@ -49,11 +49,11 @@ Selector labels
 {{- define "fastly-controller.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "fastly-controller.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
-{{- end -}}
+{{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
 {{- define "fastly-controller.serviceAccountName" -}}
 {{ default "fastly-controller" .Values.serviceAccount.nameOverride }}
-{{- end -}}
+{{- end }}
