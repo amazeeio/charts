@@ -14,7 +14,7 @@ spec:
   user: {{ required (printf "user is required for %s" $providerName) $providerConfig.user | quote }}
   type: {{ $providerConfig.type | default "generic" | quote }}
   auth:
-    mechanism: {{ required (printf "auth.mechanism is required for %s" $providerName) $providerConfig.auth.mechanism | quote }}
-    source: {{ required (printf "auth.source is required for %s" $providerName) $providerConfig.auth.source | quote }}
-    tls: {{ required (printf "auth.tls (bool) is required for %s" $providerName) $providerConfig.auth.tls }}
+    mechanism: {{ $providerConfig.auth.mechanism | default "SCRAM-SHA-1" | quote }}
+    source: {{ $providerConfig.auth.source | default "admin" | quote }}
+    tls: {{ $providerConfig.auth.tls | default false }}
 {{- end }}
