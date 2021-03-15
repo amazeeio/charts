@@ -1,7 +1,9 @@
 # the following values are defaults which may be overridden
 
-# If the controller is running in an openshift,
-# then the argument `--is-openshift=true` should be added
+global:
+  # set to true to enable openshift support
+  openshift: false
+
 extraArgs:
 - "--metrics-addr=127.0.0.1:8080"
 - "--enable-leader-election=true"
