@@ -46,7 +46,7 @@ spec:
         {{- if or .Values.extraArgs .Values.global.openshift }}
         args:
         {{- if .Values.global.openshift }}
-        - "--is-openshift=true"
+        - "--openshift=true"
         {{- end }}
         {{- with .Values.extraArgs }}
         {{- toYaml . | nindent 8 }}
