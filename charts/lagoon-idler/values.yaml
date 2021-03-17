@@ -1,0 +1,71 @@
+customSelectors:
+  enabled: false
+  selectors: ""
+
+vars:
+  lagoonApiUrl: ''
+  lagoonApiToken: ''
+  elasticsearchUser: ''
+  elasticsearchPass: ''
+  elasticsearchHost: ''
+  cliCron: '5,35 * * * *'
+  serviceCron: '0 */4 * * *'
+  enableCliIdler: true
+  enableServiceIdler: true
+  podIntervalCheck: 4
+  elasticIntervalCheck: 4h
+
+# the following values are defaults which may be overridden
+args:
+- "--metrics-addr=127.0.0.1:8080"
+- "--enable-leader-election=true"
+
+# any extra args can be defined
+extraArgs:
+
+# override .Chart.Name
+nameOverride: ""
+
+image:
+  repository: amazeeio/lagoon-idler
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+imagePullSecrets: []
+
+serviceAccount:
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 8443
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+# this is a sidecar in the same pod as the dioscuri container
+kubeRBACProxy:
+  image:
+    repository: gcr.io/kubebuilder/kube-rbac-proxy
+    pullPolicy: IfNotPresent
+    tag: v0.4.1
+
+  securityContext: {}
+
+  resources: {}
