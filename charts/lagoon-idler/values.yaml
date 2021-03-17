@@ -2,18 +2,29 @@ customSelectors:
   enabled: false
   selectors: ""
 
-vars:
-  lagoonApiUrl: ''
-  lagoonApiToken: ''
-  elasticsearchUser: ''
-  elasticsearchPass: ''
-  elasticsearchHost: ''
-  cliCron: '5,35 * * * *'
-  serviceCron: '0 */4 * * *'
-  enableCliIdler: true
-  enableServiceIdler: true
-  podIntervalCheck: 4
-  elasticIntervalCheck: 4h
+envs:
+  - name: CLI_CRON
+    value: '5,35 * * * *'
+  - name: SERVICE_CRON
+    value: '0 */4 * * *'
+  - name: ENABLE_SERVICE_IDLER
+    value: true
+  - name: ENABLE_CLI_IDLER
+    value: true
+  - name: POD_INTERVAL_CHECK
+    value: 4
+  - name: ELASTIC_INTERVAL_CHECK
+    value: 4h
+  - name: LAGOON_API_URL
+    value: ''
+  - name: LAGOON_API_TOKEN
+    value: ''
+  - name: ELASTICSEARCH_USER
+    value: ''
+  - name: ELASTICSEARCH_PASS
+    value: ''
+  - name: ELASTICSEARCH_HOST
+    value: ''
 
 # the following values are defaults which may be overridden
 args:

@@ -53,49 +53,9 @@ spec:
         {{- end }}
         {{- end }}
         env:
-        {{- if .Values.vars.lagoonApiUrl}}
-        - name: LAGOON_API_URL
-          value: '{{ .Values.vars.lagoonApiUrl }}'
-        {{- end}}
-        {{- if .Values.vars.lagoonApiToken}}
-        - name: LAGOON_API_TOKEN
-          value: '{{ .Values.vars.lagoonApiToken }}'
-        {{- end}}
-        {{- if .Values.vars.elasticsearchUser}}
-        - name: ELASTICSEARCH_USER
-          value: '{{ .Values.vars.elasticsearchUser }}'
-        {{- end}}
-        {{- if .Values.vars.elasticsearchPass}}
-        - name: ELASTICSEARCH_PASS
-          value: '{{ .Values.vars.elasticsearchPass }}'
-        {{- end}}
-        {{- if .Values.vars.elasticsearchHost}}
-        - name: ELASTICSEARCH_HOST
-          value: '{{ .Values.vars.elasticsearchHost }}'
-        {{- end}}
-        {{- if .Values.vars.cliCron}}
-        - name: CLI_CRON
-          value: '{{ .Values.vars.cliCron }}'
-        {{- end}}
-        {{- if .Values.vars.serviceCron}}
-        - name: SERVICE_CRON
-          value: '{{ .Values.vars.serviceCron }}'
-        {{- end}}
-        {{- if .Values.vars.enableServiceIdler}}
-        - name: ENABLE_SERVICE_IDLER
-          value: '{{ .Values.vars.enableServiceIdler }}'
-        {{- end}}
-        {{- if .Values.vars.enableCliIdler}}
-        - name: ENABLE_CLI_IDLER
-          value: '{{ .Values.vars.enableCliIdler }}'
-        {{- end}}
-        {{- if .Values.vars.podIntervalCheck}}
-        - name: POD_INTERVAL_CHECK
-          value: '{{ .Values.vars.podIntervalCheck }}'
-        {{- end}}
-        {{- if .Values.vars.elasticIntervalCheck}}
-        - name: ELASTIC_INTERVAL_CHECK
-          value: '{{ .Values.vars.elasticIntervalCheck }}'
+        {{- range $name, $value := .Values.envs }}
+        - name: {{ .name }}
+          value: {{ .value | quote }}
         {{- end}}
         {{- if .Values.customSelectors.enabled}}
         - name: SELECTORS_YAML_FILE
