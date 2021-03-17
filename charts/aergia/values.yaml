@@ -1,0 +1,75 @@
+templates:
+  enabled: false
+  error: |
+    {{define "base"}}
+    <html>
+    <body>
+    {{ .ErrorCode }} {{ .ErrorMessage }}
+    </body>
+    </html>
+    {{end}}
+  unidle: |
+    {{define "base"}}
+    <html>
+    <head>
+    <meta http-equiv="refresh" content="{{ .RefreshInterval }}">
+    </head>
+    <body>
+    {{ .ErrorCode }} {{ .ErrorMessage }}
+    </body>
+    </html>
+    {{end}}
+
+extraArgs:
+- "--metrics-addr=127.0.0.1:8080"
+- "--enable-leader-election=true"
+
+image:
+  repository: amazeeio/aergia
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+
+serviceAccount:
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 8443
+
+backend:
+  service:
+    type: ClusterIP
+    port: 80
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+# this sidecar runs in the same pod as dbaas-operator
+kubeRBACProxy:
+  image:
+    repository: gcr.io/kubebuilder/kube-rbac-proxy
+    pullPolicy: IfNotPresent
+    tag: v0.4.1
+
+  securityContext: {}
+
+  resources: {}
