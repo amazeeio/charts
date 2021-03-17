@@ -5,7 +5,6 @@ metadata:
   labels:
     {{- include "aergia.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       {{- include "aergia.selectorLabels" . | nindent 6 }}
@@ -14,10 +13,10 @@ spec:
       labels:
         {{- include "aergia.selectorLabels" . | nindent 8 }}
     spec:
-    {{- with .Values.imagePullSecrets }}
+      {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
-    {{- end }}
+      {{- end }}
       serviceAccountName: {{ include "aergia.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
@@ -47,7 +46,7 @@ spec:
           {{- if .Values.extraArgs }}
           args:
           {{- with .Values.extraArgs }}
-          {{- toYaml . | nindent 10 }}
+          {{- toYaml . | nindent 12 }}
           {{- end }}
           {{- end }}
           resources:
