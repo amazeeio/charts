@@ -39,11 +39,11 @@ spec:
       - name: manager
         securityContext:
           {{- toYaml .Values.securityContext | nindent 10 }}
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion}}"
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         command:
         - /manager
-        {{- if or .Values.args .Values.extraArgs}}
+        {{- if or .Values.args .Values.extraArgs }}
         args:
         {{- with .Values.args }}
         {{- toYaml . | nindent 8 }}
@@ -56,18 +56,18 @@ spec:
         {{- range $name, $value := .Values.envs }}
         - name: {{ .name }}
           value: {{ .value | quote }}
-        {{- end}}
-        {{- if .Values.customSelectors.enabled}}
+        {{- end }}
+        {{- if .Values.customSelectors.enabled }}
         - name: SELECTORS_YAML_FILE
           value: "/custom/selectors.yaml"
         volumeMounts:
           - name: {{ include "lagoon-idler.fullname" . }}-selectors
             mountPath: "/custom"
             readOnly: true
-        {{- end}}
+        {{- end }}
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
-      {{- if .Values.customSelectors.enabled}}
+      {{- if .Values.customSelectors.enabled }}
       volumes:
         - name: {{ include "lagoon-idler.fullname" . }}-selectors
           configMap:
@@ -75,7 +75,7 @@ spec:
             items:
             - key: "selectors.yaml"
               path: "selectors.yaml"
-      {{- end}}
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
