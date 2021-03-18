@@ -60,21 +60,42 @@ spec:
         {{- if .Values.customSelectors.enabled }}
         - name: SELECTORS_YAML_FILE
           value: "/custom/selectors.yaml"
+        {{- end }}
+        {{- if .Values.sshkey }}
+        - name: LAGOON_SSH_KEYPATH
+          value: "/idler/ssh/ssh-privatekey"
+        {{- end }}
+        {{- if or .Values.sshkey .Values.customSelectors.enabled}}
         volumeMounts:
+          {{- if .Values.customSelectors.enabled }}
           - name: {{ include "lagoon-idler.fullname" . }}-selectors
             mountPath: "/custom"
             readOnly: true
+          {{- end }}
+          {{- if .Values.sshkey }}
+          - name: {{ include "lagoon-idler.fullname" . }}-sshkey
+            mountPath: "/idler/ssh"
+            readOnly: true
+          {{- end }}
         {{- end }}
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
-      {{- if .Values.customSelectors.enabled }}
+      {{- if or .Values.sshkey .Values.customSelectors.enabled}}
       volumes:
+        {{- if .Values.sshkey }}
+        - name: {{ include "lagoon-idler.fullname" . }}-sshkey
+          secret:
+            secretName: {{ include "lagoon-idler.fullname" . }}-sshkey
+            defaultMode: 0400
+        {{- end }}
+        {{- if .Values.customSelectors.enabled }}
         - name: {{ include "lagoon-idler.fullname" . }}-selectors
           configMap:
             name: {{ include "lagoon-idler.fullname" . }}-selectors
             items:
             - key: "selectors.yaml"
               path: "selectors.yaml"
+        {{- end }}
       {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
