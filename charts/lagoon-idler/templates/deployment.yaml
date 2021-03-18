@@ -86,7 +86,7 @@ spec:
         - name: {{ include "lagoon-idler.fullname" . }}-sshkey
           secret:
             secretName: {{ include "lagoon-idler.fullname" . }}-sshkey
-            defaultMode: 0400
+            defaultMode: 420
         {{- end }}
         {{- if .Values.customSelectors.enabled }}
         - name: {{ include "lagoon-idler.fullname" . }}-selectors
