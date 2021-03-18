@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "lagoon-idler.fullname" . }}
+  labels:
+    {{- include "lagoon-idler.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+  - port: {{ .Values.service.port }}
+    targetPort: https
+    protocol: TCP
+    name: https
+  selector:
+    {{- include "lagoon-idler.selectorLabels" . | nindent 4 }}
