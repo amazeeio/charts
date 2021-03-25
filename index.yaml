@@ -74,6 +74,25 @@ entries:
     version: 0.2.0
   dioscuri:
   - apiVersion: v2
+    appVersion: v0.1.10
+    created: "2021-03-25T00:26:27.674106184Z"
+    description: A Helm chart for Kubernetes which installs Dioscuri (https://github.com/amazeeio/dioscuri).
+    digest: 3766b3d5db4e5d36b63e7b81eb06c6a0c0ac7a811704a79fa2a70bd9b76a44d0
+    home: https://github.com/amazeeio/charts
+    icon: https://raw.githubusercontent.com/amazeeio/charts/main/icon.png
+    maintainers:
+    - email: ben.jackson@amazee.io
+      name: shreddedbacon
+      url: https://amazee.io
+    - email: scott.leggett@amazee.io
+      name: smlx
+      url: https://amazee.io
+    name: dioscuri
+    type: application
+    urls:
+    - https://github.com/amazeeio/charts/releases/download/dioscuri-0.3.2/dioscuri-0.3.2.tgz
+    version: 0.3.2
+  - apiVersion: v2
     appVersion: v0.1.9
     created: "2021-03-16T02:23:49.406480312Z"
     description: A Helm chart for Kubernetes which installs Dioscuri (https://github.com/amazeeio/dioscuri).
