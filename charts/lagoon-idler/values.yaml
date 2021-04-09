@@ -11,9 +11,9 @@ envs:
     value: true
   - name: ENABLE_CLI_IDLER
     value: true
-  - name: POD_INTERVAL_CHECK
+  - name: POD_CHECK_INTERVAL
     value: 4
-  - name: ELASTIC_INTERVAL_CHECK
+  - name: ELASTIC_CHECK_INTERVAL
     value: 4h
   - name: LAGOON_API_URL
     value: ''
