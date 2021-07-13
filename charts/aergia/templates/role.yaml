@@ -8,36 +8,26 @@ rules:
 - apiGroups:
   - ""
   resources:
-  - namespaces
+  - configmaps
   verbs:
   - get
   - list
   - watch
+  - create
+  - update
+  - patch
+  - delete
 - apiGroups:
-  - '*'
+  - ""
   resources:
-  - ingress/status
+  - configmaps/status
   verbs:
   - get
-  - patch
   - update
+  - patch
 - apiGroups:
-  - '*'
+  - ""
   resources:
-  - ingresses
+  - events
   verbs:
-  - get
-  - list
-  - patch
-  - update
-  - watch
-- apiGroups:
-  - apps
-  resources:
-  - deployments
-  verbs:
-  - get
-  - list
-  - patch
-  - update
-  - watch
+  - create
