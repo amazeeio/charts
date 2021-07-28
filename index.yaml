@@ -292,6 +292,22 @@ entries:
     version: 0.1.0
   lagoon-idler:
   - apiVersion: v2
+    appVersion: v0.3.1
+    created: "2021-07-28T05:29:39.479839747Z"
+    description: A Helm chart for Kubernetes which installs Lagoon Idler.
+    digest: 65f948fa3dd0903c94a2a3fe6580d8d502e8d86f2b65e05800427de84a987e13
+    home: https://github.com/amazeeio/charts
+    icon: https://raw.githubusercontent.com/amazeeio/charts/main/icon.png
+    maintainers:
+    - email: ben.jackson@amazee.io
+      name: shreddedbacon
+      url: https://amazee.io
+    name: lagoon-idler
+    type: application
+    urls:
+    - https://github.com/amazeeio/charts/releases/download/lagoon-idler-0.0.7/lagoon-idler-0.0.7.tgz
+    version: 0.0.7
+  - apiVersion: v2
     appVersion: v0.3.0
     created: "2021-07-13T22:35:53.963383647Z"
     description: A Helm chart for Kubernetes which installs Lagoon Idler.
