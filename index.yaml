@@ -2,6 +2,22 @@ apiVersion: v1
 entries:
   aergia:
   - apiVersion: v2
+    appVersion: v0.0.4
+    created: "2021-07-28T04:01:15.978060501Z"
+    description: A Helm chart for Kubernetes which installs Aergia, a controller that allows simple scaling from zero.
+    digest: 1fb10e94cab0b01f29df885eefad7be9bbefa0dbf496d1108b4d37423a00ca6d
+    home: https://github.com/amazeeio/charts
+    icon: https://raw.githubusercontent.com/amazeeio/charts/main/icon.png
+    maintainers:
+    - email: ben.jackson@amazee.io
+      name: shreddedbacon
+      url: https://amazee.io
+    name: aergia
+    type: application
+    urls:
+    - https://github.com/amazeeio/charts/releases/download/aergia-0.1.5/aergia-0.1.5.tgz
+    version: 0.1.5
+  - apiVersion: v2
     appVersion: v0.0.3
     created: "2021-07-13T23:03:38.730607765Z"
     description: A Helm chart for Kubernetes which installs Aergia, a controller that allows simple scaling from zero.
