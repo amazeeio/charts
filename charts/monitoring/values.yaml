@@ -7,10 +7,10 @@ kube-prometheus-stack:
   alertmanager:
     serviceMonitor:
       selfMonitor: true
-      metricRelabelings: []
-      # - action: keep
-      #   regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'
-      #   sourceLabels: [__name__]
+      metricRelabelings:
+      - action: keep
+        regex: 'alertmanager_alerts.+'
+        sourceLabels: [__name__]
 
   grafana:
     serviceMonitor:
@@ -66,7 +66,7 @@ kube-prometheus-stack:
       #   action: drop
 
   kubeControllerManager:
-    enabled: true
+    enabled: false
     serviceMonitor:
       metricRelabelings: []
       # - action: keep
@@ -74,7 +74,7 @@ kube-prometheus-stack:
       #   sourceLabels: [__name__]
 
   coreDns:
-    enabled: true
+    enabled: false
     serviceMonitor:
       metricRelabelings: []
       # - action: keep
