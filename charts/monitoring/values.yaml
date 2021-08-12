@@ -1,8 +1,38 @@
 kube-prometheus-stack:
   enabled: true
-  # disable the default alert rules
+  # selectively enable only record rules, not alerts
   defaultRules:
-    create: false
+    create: true
+    rules:
+      # recording (used by default dashboards)
+      k8s: true
+      kubeApiserver: true
+      kubePrometheusNodeRecording: true
+      kubeScheduler: true
+      node: true
+      # alerting
+      alertmanager: false
+      etcd: false
+      general: false
+      kubeApiserverAvailability: false
+      kubeApiserverError: false
+      kubeApiserverSlos: false
+      kubelet: false
+      kubePrometheusGeneral: false
+      kubePrometheusNodeAlerting: false
+      kubernetesAbsent: false
+      kubernetesApps: false
+      kubernetesResources: false
+      kubernetesStorage: false
+      kubernetesSystem: false
+      kubeStateMetrics: false
+      network: false
+      prometheus: false
+      prometheusOperator: false
+      time: false
+
+  # default service monitor configuration
+  # TODO: trim the metrics down further
 
   alertmanager:
     serviceMonitor:
