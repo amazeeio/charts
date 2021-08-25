@@ -12,9 +12,10 @@ maintainers:
 - name: smlx
   email: scott.leggett@amazee.io
   url: https://amazee.io
+kubeVersion: ">= 1.19.0-0"
 
 type: application
 
-version: 0.2.1
+version: 0.3.0
 
 appVersion: v0.1.6
