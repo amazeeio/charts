@@ -15,7 +15,7 @@ image:
   repository: amazeeio/dioscuri
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: k8s_122
 
 imagePullSecrets: []
 
