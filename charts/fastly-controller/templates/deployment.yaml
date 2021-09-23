@@ -51,7 +51,7 @@ spec:
         - name: ENABEL_PAUSED_STATUS_CRON
           value: {{ .Values.enablePausedStatusCron }}
         - name: PAUSED_STATUS_CRON
-          value: {{ .Values.pausedStatusCron }}
+          value: "{{ .Values.pausedStatusCron }}"
         command:
         - /manager
         {{- with .Values.extraArgs }}
