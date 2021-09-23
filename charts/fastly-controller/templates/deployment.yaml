@@ -48,6 +48,10 @@ spec:
           value: {{ .Values.fastly.tlsConfigID }}
         - name: CLUSTER_NAME
           value: {{ .Values.fastly.clusterName }}
+        - name: ENABEL_PAUSED_STATUS_CRON
+          value: {{ .Values.enablePausedStatusCron }}
+        - name: PAUSED_STATUS_CRON
+          value: {{ .Values.pausedStatusCron }}
         command:
         - /manager
         {{- with .Values.extraArgs }}
