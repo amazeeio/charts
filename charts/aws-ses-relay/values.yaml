@@ -1,0 +1,57 @@
+image:
+  repository: blueimp/aws-smtp-relay
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+
+serviceAccount:
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+service:
+  type: ClusterIP
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+# Relay configuration.
+ses:
+  port: 1025
+  awsConfigSet: 'myconfigset'
+  allowedSenderExpression: 
+  deniedSenderExpression: 
+  # allowedClientIPs: 
+  #   - "1.2.3.4"
+  #   - "4.5.6.7"
+
+servicePorts:
+  - name: 25-tcp
+    port: 25
+    protocol: TCP
+    targetPort: smtp-port
+  - name: 465-tcp
+    port: 465
+    protocol: TCP
+    targetPort: smtp-port
+
+aws:
+  region: "ap-southeast-2"
+  accessKey: ABCDEFG
+  accessSecretKey: ABCDEFG0123456789

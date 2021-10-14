@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "ses-relay.fullname" . }}
+  labels:
+    {{- include "ses-relay.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    {{- with .Values.servicePorts }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+  selector:
+    {{- include "ses-relay.selectorLabels" . | nindent 4 }}
+  type: {{ .Values.service.type }}
