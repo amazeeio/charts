@@ -35,9 +35,9 @@ affinity: {}
 ses:
   port: 1025
   awsConfigSet: 'myconfigset'
-  allowedSenderExpression: 
-  deniedSenderExpression: 
-  # allowedClientIPs: 
+  allowedSenderExpression:
+  deniedSenderExpression:
+  # allowedClientIPs:
   #   - "1.2.3.4"
   #   - "4.5.6.7"
 
