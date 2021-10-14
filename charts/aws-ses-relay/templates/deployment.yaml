@@ -29,21 +29,21 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command:
-              - aws-smtp-relay
-              - '-e'
-              - {{ .Values.ses.awsConfigSet }}
-              {{- if .Values.ses.deniedSenderExpression }}
-              - '-d'
-              - {{ .Values.ses.deniedSenderExpression }}
-              {{- end }}
-              {{- if .Values.ses.allowedSenderExpression }}
-              - '-l'
-              - {{ .Values.ses.allowedSenderExpression }}
-              {{- end }}
-              {{- if .Values.ses.allowedClientIPs }}
-              - '-i'
-              - '{{ join ',' .Values.ses.allowedClientIPs }}'
-              {{- end }}
+            - aws-smtp-relay
+            - '-e'
+            - {{ .Values.ses.awsConfigSet }}
+            {{- if .Values.ses.deniedSenderExpression }}
+            - '-d'
+            - {{ .Values.ses.deniedSenderExpression }}
+            {{- end }}
+            {{- if .Values.ses.allowedSenderExpression }}
+            - '-l'
+            - {{ .Values.ses.allowedSenderExpression }}
+            {{- end }}
+            {{- if .Values.ses.allowedClientIPs }}
+            - '-i'
+            - '{{ join ',' .Values.ses.allowedClientIPs }}'
+            {{- end }}
           env:
             {{- if .Values.aws }}
             - name: AWS_REGION
