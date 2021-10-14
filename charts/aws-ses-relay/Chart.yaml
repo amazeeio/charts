@@ -1,0 +1,17 @@
+apiVersion: v2
+name: aws-ses-relay
+description:
+  A Helm chart for Kubernetes which installs the AWS SES relay.
+home: https://github.com/amazeeio/charts
+icon: https://raw.githubusercontent.com/amazeeio/charts/main/icon.png
+maintainers:
+- name: GovCMS
+- name: shreddedbacon
+  email: ben.jackson@amazee.io
+  url: https://amazee.io
+
+type: application
+
+version: 0.0.1
+
+appVersion: v1.0.0
