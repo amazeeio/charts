@@ -74,6 +74,12 @@ extraArgs:
 - "--metrics-addr=127.0.0.1:8080"
 - "--enable-leader-election=true"
 
+# enable the providers
+# by default mariadb is enabled and the others are disabled
+enableMariaDBProviders: true
+enableMongoDBProviders: false
+enablePostreSQLProviders: false
+
 image:
   repository: amazeeio/dbaas-operator
   pullPolicy: IfNotPresent

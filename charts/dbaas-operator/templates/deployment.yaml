@@ -47,6 +47,15 @@ spec:
         args:
         {{- toYaml . | nindent 8 }}
         {{- end }}
+        {{- if .Values.enableMariaDBProviders }}
+        - --enable-mariadb-providers
+        {{- end }}
+        {{- if .Values.enableMongoDBProviders }}
+        - --enable-mongodb-providers
+        {{- end }}
+        {{- if .Values.enablePostreSQLProviders }}
+        - --enable-postgresql-providers
+        {{- end }}
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
       {{- with .Values.nodeSelector }}
