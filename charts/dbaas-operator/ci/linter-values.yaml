@@ -27,3 +27,7 @@ mongodbProviders:
       mechanism: SCRAM-SHA-1
       source: admin
       tls: false
+
+enableMariaDBProviders: true
+enableMongoDBProviders: true
+enablePostreSQLProviders: true
