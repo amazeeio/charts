@@ -47,6 +47,15 @@ spec:
         command:
         - /manager
         {{- with .Values.extraArgs }}
+        {{- if .Values.enableMariaDBProviders }}
+        - --enable-mariadb-providers
+        {{- end }}
+        {{- if .Values.enableMongoDBProviders }}
+        - --enable-mongodb-providers
+        {{- end }}
+        {{- if .Values.enablePostreSQLProviders }}
+        - --enable-postgresql-providers
+        {{- end }}
         args:
         {{- toYaml . | nindent 8 }}
         {{- end }}
