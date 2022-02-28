@@ -2,7 +2,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.2.4
+    controller-gen.kubebuilder.io/version: v0.6.2
   name: hostmigrations.dioscuri.amazee.io
 spec:
   group: dioscuri.amazee.io
@@ -14,8 +14,6 @@ spec:
   scope: Namespaced
   versions:
   - name: v1
-    served: true
-    storage: true
     schema:
       openAPIV3Schema:
         description: HostMigration is the Schema for the hostmigrations API
@@ -79,12 +77,14 @@ spec:
                 type: array
             type: object
         type: object
+    served: true
+    storage: true
 ---
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.2.4
+    controller-gen.kubebuilder.io/version: v0.6.2
   name: ingressmigrates.dioscuri.amazee.io
 spec:
   group: dioscuri.amazee.io
@@ -96,8 +96,6 @@ spec:
   scope: Namespaced
   versions:
   - name: v1
-    served: true
-    storage: true
     schema:
       openAPIV3Schema:
         description: IngressMigrate is the Schema for the ingressmigrates API
@@ -161,12 +159,14 @@ spec:
                 type: array
             type: object
         type: object
+    served: true
+    storage: true
 ---
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.2.4
+    controller-gen.kubebuilder.io/version: v0.6.2
   name: routemigrates.dioscuri.amazee.io
 spec:
   group: dioscuri.amazee.io
@@ -178,8 +178,6 @@ spec:
   scope: Namespaced
   versions:
   - name: v1
-    served: true
-    storage: true
     schema:
       openAPIV3Schema:
         description: RouteMigrate is the Schema for the routemigrates API
@@ -242,3 +240,5 @@ spec:
                 type: array
             type: object
         type: object
+    served: true
+    storage: true
