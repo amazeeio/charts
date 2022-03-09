@@ -6,22 +6,51 @@ metadata:
     {{- include "aergia.labels" . | nindent 4 }}
 rules:
 - apiGroups:
-  - apps
+  - ""
   resources:
-  - deployments
+  - endpoints
   verbs:
   - get
   - list
   - patch
-  - update
   - watch
 - apiGroups:
-  - ''
+  - ""
   resources:
   - namespaces
   verbs:
   - get
   - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - pods/exec
+  verbs:
+  - create
+- apiGroups:
+  - ""
+  resources:
+  - pods/log
+  verbs:
+  - get
+  - list
+- apiGroups:
+  - ""
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+  - patch
   - watch
 - apiGroups:
   - '*'
@@ -35,6 +64,16 @@ rules:
   - '*'
   resources:
   - ingresses
+  verbs:
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - apps
+  resources:
+  - deployments
   verbs:
   - get
   - list
