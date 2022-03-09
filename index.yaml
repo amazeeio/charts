@@ -2,6 +2,22 @@ apiVersion: v1
 entries:
   aergia:
   - apiVersion: v2
+    appVersion: v0.1.1
+    created: "2022-03-09T06:04:46.689985171Z"
+    description: A Helm chart for Kubernetes which installs Aergia, a controller that allows simple scaling from and to zero.
+    digest: f1abb021881e5f5e6c6b8ac4b9fdea4f10da055ac3c129772f3b1176b7122865
+    home: https://github.com/amazeeio/charts
+    icon: https://raw.githubusercontent.com/amazeeio/charts/main/icon.png
+    maintainers:
+    - email: ben.jackson@amazee.io
+      name: shreddedbacon
+      url: https://amazee.io
+    name: aergia
+    type: application
+    urls:
+    - https://github.com/amazeeio/charts/releases/download/aergia-0.2.0/aergia-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
     appVersion: v0.0.4
     created: "2021-07-28T04:01:15.978060501Z"
     description: A Helm chart for Kubernetes which installs Aergia, a controller that allows simple scaling from zero.
@@ -366,6 +382,22 @@ entries:
     - https://github.com/amazeeio/charts/releases/download/fastly-controller-0.1.0/fastly-controller-0.1.0.tgz
     version: 0.1.0
   lagoon-idler:
+  - apiVersion: v2
+    appVersion: v0.3.1
+    created: "2022-03-09T06:04:46.809882146Z"
+    description: A Helm chart for Kubernetes which installs Lagoon Idler.
+    digest: f71cb2af1089793c0ec410e74ef1212f7e4fc081b19189a33b7617fe92148f2f
+    home: https://github.com/amazeeio/charts
+    icon: https://raw.githubusercontent.com/amazeeio/charts/main/icon.png
+    maintainers:
+    - email: ben.jackson@amazee.io
+      name: shreddedbacon
+      url: https://amazee.io
+    name: lagoon-idler
+    type: application
+    urls:
+    - https://github.com/amazeeio/charts/releases/download/lagoon-idler-0.0.8/lagoon-idler-0.0.8.tgz
+    version: 0.0.8
   - apiVersion: v2
     appVersion: v0.3.1
     created: "2021-07-28T05:29:39.479839747Z"
