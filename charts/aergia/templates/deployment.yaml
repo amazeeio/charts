@@ -44,29 +44,29 @@ spec:
           command:
             - /manager
           args:
-          - "--metrics-addr=127.0.0.1:8080"
-          - "--enable-leader-election=true"
-          {{- if .Values.idling }}{{- if .Values.idling.prometheusEndpoint }}
-          - "--prometheus-endpoint={{ .Values.idling.prometheusEndpoint }}"
-          {{- end }}{{- end }}
-          {{- if .Values.idling }}{{- if .Values.idling.prometheusCheckInterval }}
-          - "--prometheus-interval={{ .Values.idling.prometheusCheckInterval }}"
-          {{- end }}{{- end }}
-          {{- if .Values.idling }}{{- if .Values.idling.podCheckInterval }}
-          - "--pod-check-interval={{ .Values.idling.podCheckInterval }}"
-          {{- end }}{{- end }}
-          {{- if .Values.idling }}{{- if .Values.idling.cliCron }}
-          - "--cli-idler-cron={{ .Values.idling.cliCron }}"
-          {{- end }}{{- end }}
-          {{- if .Values.idling }}{{- if .Values.idling.serviceCron }}
-          - "--service-idler-cron={{ .Values.idling.serviceCron }}"
-          {{- end }}{{- end }}
-          {{- if .Values.idling }}{{- if .Values.idling.refreshInterval }}
-          - "--refresh-interval={{ .Values.idling.refreshInterval }}"
-          {{- end }}{{- end }}
-          {{- with .Values.extraArgs }}
-          {{- toYaml . | nindent 12 }}
-          {{- end }}
+            - "--metrics-addr=127.0.0.1:8080"
+            - "--enable-leader-election=true"
+            {{- if .Values.idling }}{{- if .Values.idling.prometheusEndpoint }}
+            - "--prometheus-endpoint={{ .Values.idling.prometheusEndpoint }}"
+            {{- end }}{{- end }}
+            {{- if .Values.idling }}{{- if .Values.idling.prometheusCheckInterval }}
+            - "--prometheus-interval={{ .Values.idling.prometheusCheckInterval }}"
+            {{- end }}{{- end }}
+            {{- if .Values.idling }}{{- if .Values.idling.podCheckInterval }}
+            - "--pod-check-interval={{ .Values.idling.podCheckInterval }}"
+            {{- end }}{{- end }}
+            {{- if .Values.idling }}{{- if .Values.idling.cliCron }}
+            - "--cli-idler-cron={{ .Values.idling.cliCron }}"
+            {{- end }}{{- end }}
+            {{- if .Values.idling }}{{- if .Values.idling.serviceCron }}
+            - "--service-idler-cron={{ .Values.idling.serviceCron }}"
+            {{- end }}{{- end }}
+            {{- if .Values.idling }}{{- if .Values.idling.refreshInterval }}
+            - "--refresh-interval={{ .Values.idling.refreshInterval }}"
+            {{- end }}{{- end }}
+            {{- with .Values.extraArgs }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
           env:
           {{- if .Values.idling }}{{- if or (eq .Values.idling.enableServiceIdler true) (eq .Values.idling.enableServiceIdler false) }}
           - name: ENABLE_SERVICE_IDLER
