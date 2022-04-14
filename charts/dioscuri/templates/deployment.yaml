@@ -43,11 +43,8 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         command:
         - /manager
-        {{- if or .Values.extraArgs .Values.global.openshift }}
+        {{- if .Values.extraArgs }}
         args:
-        {{- if .Values.global.openshift }}
-        - "--openshift=true"
-        {{- end }}
         {{- with .Values.extraArgs }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
