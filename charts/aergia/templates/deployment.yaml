@@ -43,28 +43,73 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command:
             - /manager
-          {{- if .Values.extraArgs }}
           args:
-          {{- with .Values.extraArgs }}
-          {{- toYaml . | nindent 12 }}
+            - "--metrics-addr=127.0.0.1:8080"
+            - "--enable-leader-election=true"
+            {{- if .Values.idling }}{{- if .Values.idling.prometheusEndpoint }}
+            - "--prometheus-endpoint={{ .Values.idling.prometheusEndpoint }}"
+            {{- end }}{{- end }}
+            {{- if .Values.idling }}{{- if .Values.idling.prometheusCheckInterval }}
+            - "--prometheus-interval={{ .Values.idling.prometheusCheckInterval }}"
+            {{- end }}{{- end }}
+            {{- if .Values.idling }}{{- if .Values.idling.podCheckInterval }}
+            - "--pod-check-interval={{ .Values.idling.podCheckInterval }}"
+            {{- end }}{{- end }}
+            {{- if .Values.idling }}{{- if .Values.idling.cliCron }}
+            - "--cli-idler-cron={{ .Values.idling.cliCron }}"
+            {{- end }}{{- end }}
+            {{- if .Values.idling }}{{- if .Values.idling.serviceCron }}
+            - "--service-idler-cron={{ .Values.idling.serviceCron }}"
+            {{- end }}{{- end }}
+            {{- if .Values.idling }}{{- if .Values.idling.refreshInterval }}
+            - "--refresh-interval={{ .Values.idling.refreshInterval }}"
+            {{- end }}{{- end }}
+            {{- with .Values.extraArgs }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
+          env:
+          {{- if .Values.idling }}{{- if or (eq .Values.idling.enableServiceIdler true) (eq .Values.idling.enableServiceIdler false) }}
+          - name: ENABLE_SERVICE_IDLER
+            value: {{ .Values.idling.enableServiceIdler }}
+          {{- end }}{{- end }}
+          {{- if .Values.idling }}{{- if or (eq .Values.idling.enableCLIIdler true) (eq .Values.idling.enableCLIIdler false) }}
+          - name: ENABLE_CLI_IDLER
+            value: {{ .Values.idling.enableCLIIdler }}
+          {{- end }}{{- end }}
+          {{- if .Values.idling }}{{- if or (eq .Values.idling.dryRun true) (eq .Values.idling.dryRun false) }}
+          - name: DRY_RUN
+            value: {{ .Values.idling.dryRun }}
+          {{- end }}{{- end }}
+          {{- if .Values.templates.enabled}}
+            - name: ERROR_FILES_PATH
+              value: "/templates"
+          {{- end}}
+          {{- if .Values.customSelectors.enabled }}
+          - name: SELECTORS_YAML_FILE
+            value: "/custom/selectors.yaml"
           {{- end }}
+          {{- range $name, $value := .Values.extraEnvs }}
+          - name: {{ .name }}
+            value: {{ .value | quote }}
           {{- end }}
           ports:
             - containerPort: 5000
               name: backend
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- if .Values.templates.enabled}}
-          env:
-            - name: ERROR_FILES_PATH
-              value: "/templates"
           volumeMounts:
+          {{- if .Values.templates.enabled}}
             - name: {{ include "aergia.fullname" . }}-templates
               mountPath: "/templates"
               readOnly: true
           {{- end}}
-      {{- if .Values.templates.enabled}}
+          {{- if .Values.customSelectors.enabled }}
+            - name: {{ include "aergia.fullname" . }}-selectors
+              mountPath: "/custom"
+              readOnly: true
+          {{- end }}
       volumes:
+      {{- if .Values.templates.enabled}}
         - name: {{ include "aergia.fullname" . }}-templates
           configMap:
             name: {{ include "aergia.fullname" . }}-templates
@@ -74,6 +119,14 @@ spec:
             - key: "unidle.html"
               path: "unidle.html"
       {{- end}}
+      {{- if .Values.customSelectors.enabled }}
+        - name: {{ include "aergia.fullname" . }}-selectors
+          configMap:
+            name: {{ include "aergia.fullname" . }}-selectors
+            items:
+            - key: "selectors.yaml"
+              path: "selectors.yaml"
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

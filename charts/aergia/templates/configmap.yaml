@@ -9,3 +9,12 @@ data:
   unidle.html: |
 {{ .Values.templates.unidle | indent 4 }}
 {{- end}}
+{{- if .Values.customSelectors.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "aergia.fullname" . }}-selectors
+data:
+  selectors.yaml: |
+    {{ .Values.customSelectors.selectors | indent 4 }}
+{{- end }}
