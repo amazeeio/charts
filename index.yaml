@@ -3,6 +3,23 @@ entries:
   aergia:
   - apiVersion: v2
     appVersion: v0.1.2
+    created: "2022-05-03T04:30:34.605216168Z"
+    description: A Helm chart for Kubernetes which installs Aergia, a controller that allows simple scaling from and to zero.
+    digest: 2d89b9bf64d75a9f1dac0aff590be85f1ef0efe02c6d1d14c1d33fef0f2a86f2
+    home: https://github.com/amazeeio/charts
+    icon: https://raw.githubusercontent.com/amazeeio/charts/main/icon.png
+    kubeVersion: '>= 1.19.0-0'
+    maintainers:
+    - email: ben.jackson@amazee.io
+      name: shreddedbacon
+      url: https://amazee.io
+    name: aergia
+    type: application
+    urls:
+    - https://github.com/amazeeio/charts/releases/download/aergia-0.2.2/aergia-0.2.2.tgz
+    version: 0.2.2
+  - apiVersion: v2
+    appVersion: v0.1.2
     created: "2022-03-18T06:03:47.355500934Z"
     description: A Helm chart for Kubernetes which installs Aergia, a controller that allows simple scaling from and to zero.
     digest: 601436585c31602b91a962233ad14b534fac66b89a015aa7ce3f7534f92aae50
@@ -149,6 +166,26 @@ entries:
     version: 0.0.1
   dbaas-operator:
   - apiVersion: v2
+    appVersion: v0.3.0
+    created: "2022-05-03T04:30:34.74019893Z"
+    description: A Helm chart for Kubernetes which installs the DBaaS Operator (https://github.com/amazeeio/dbaas-operator).
+    digest: 06e593458765d3125928bf30d722ce3ff01c3b147040c95ef6f71498a9831137
+    home: https://github.com/amazeeio/charts
+    icon: https://raw.githubusercontent.com/amazeeio/charts/main/icon.png
+    kubeVersion: '>= 1.19.0-0'
+    maintainers:
+    - email: ben.jackson@amazee.io
+      name: shreddedbacon
+      url: https://amazee.io
+    - email: scott.leggett@amazee.io
+      name: smlx
+      url: https://amazee.io
+    name: dbaas-operator
+    type: application
+    urls:
+    - https://github.com/amazeeio/charts/releases/download/dbaas-operator-0.3.0/dbaas-operator-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
     appVersion: v0.2.2
     created: "2022-02-15T04:33:49.639871534Z"
     description: A Helm chart for Kubernetes which installs the DBaaS Operator (https://github.com/amazeeio/dbaas-operator).
@@ -206,6 +243,26 @@ entries:
     - https://github.com/amazeeio/charts/releases/download/dbaas-operator-0.2.0/dbaas-operator-0.2.0.tgz
     version: 0.2.0
   dioscuri:
+  - apiVersion: v2
+    appVersion: v0.2.0
+    created: "2022-05-03T04:30:34.88355419Z"
+    description: A Helm chart for Kubernetes which installs Dioscuri (https://github.com/amazeeio/dioscuri).
+    digest: 12f0bee7b4ef0701342a7e174f7c66fe46a42d91f46c79b2723cd0edb0ac1ae8
+    home: https://github.com/amazeeio/charts
+    icon: https://raw.githubusercontent.com/amazeeio/charts/main/icon.png
+    kubeVersion: '>= 1.19.0-0'
+    maintainers:
+    - email: ben.jackson@amazee.io
+      name: shreddedbacon
+      url: https://amazee.io
+    - email: scott.leggett@amazee.io
+      name: smlx
+      url: https://amazee.io
+    name: dioscuri
+    type: application
+    urls:
+    - https://github.com/amazeeio/charts/releases/download/dioscuri-0.4.1/dioscuri-0.4.1.tgz
+    version: 0.4.1
   - apiVersion: v2
     appVersion: v0.2.0
     created: "2022-04-14T01:29:38.421710593Z"
@@ -436,6 +493,22 @@ entries:
     - https://github.com/amazeeio/charts/releases/download/fastly-controller-0.1.0/fastly-controller-0.1.0.tgz
     version: 0.1.0
   lagoon-idler:
+  - apiVersion: v2
+    appVersion: v0.3.1
+    created: "2022-05-03T04:30:35.039606947Z"
+    description: A Helm chart for Kubernetes which installs Lagoon Idler.
+    digest: 8979c341c7bec1ebf7c247477f9a35fcb726327a0f71cd5e4b53bc464c61f630
+    home: https://github.com/amazeeio/charts
+    icon: https://raw.githubusercontent.com/amazeeio/charts/main/icon.png
+    maintainers:
+    - email: ben.jackson@amazee.io
+      name: shreddedbacon
+      url: https://amazee.io
+    name: lagoon-idler
+    type: application
+    urls:
+    - https://github.com/amazeeio/charts/releases/download/lagoon-idler-0.1.0/lagoon-idler-0.1.0.tgz
+    version: 0.1.0
   - apiVersion: v2
     appVersion: v0.3.1
     created: "2022-03-09T06:04:46.809882146Z"
