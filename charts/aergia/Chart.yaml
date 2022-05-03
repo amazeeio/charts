@@ -8,9 +8,10 @@ maintainers:
 - name: shreddedbacon
   email: ben.jackson@amazee.io
   url: https://amazee.io
+kubeVersion: ">= 1.19.0-0"
 
 type: application
 
-version: 0.2.1
+version: 0.2.2
 
 appVersion: v0.1.2
