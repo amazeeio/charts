@@ -84,7 +84,7 @@ image:
   repository: amazeeio/dbaas-operator
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: k8s_122
+  tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
