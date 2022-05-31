@@ -16,6 +16,8 @@ serviceAccount:
   # If not set, a name is generated using the fullname template
   name: ""
 
+replicaCount: 1
+
 podAnnotations: {}
 
 podSecurityContext: {}
