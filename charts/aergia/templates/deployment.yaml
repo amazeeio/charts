@@ -5,6 +5,7 @@ metadata:
   labels:
     {{- include "aergia.labels" . | nindent 4 }}
 spec:
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       {{- include "aergia.selectorLabels" . | nindent 6 }}
@@ -70,15 +71,15 @@ spec:
           env:
           {{- if .Values.idling }}{{- if or (eq .Values.idling.enableServiceIdler true) (eq .Values.idling.enableServiceIdler false) }}
           - name: ENABLE_SERVICE_IDLER
-            value: {{ .Values.idling.enableServiceIdler }}
+            value: {{ .Values.idling.enableServiceIdler | quote }}
           {{- end }}{{- end }}
           {{- if .Values.idling }}{{- if or (eq .Values.idling.enableCLIIdler true) (eq .Values.idling.enableCLIIdler false) }}
           - name: ENABLE_CLI_IDLER
-            value: {{ .Values.idling.enableCLIIdler }}
+            value: {{ .Values.idling.enableCLIIdler | quote }}
           {{- end }}{{- end }}
           {{- if .Values.idling }}{{- if or (eq .Values.idling.dryRun true) (eq .Values.idling.dryRun false) }}
           - name: DRY_RUN
-            value: {{ .Values.idling.dryRun }}
+            value: {{ .Values.idling.dryRun | quote }}
           {{- end }}{{- end }}
           {{- if .Values.templates.enabled}}
             - name: ERROR_FILES_PATH
