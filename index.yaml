@@ -415,6 +415,26 @@ entries:
     version: 0.2.0
   fastly-controller:
   - apiVersion: v2
+    appVersion: v0.3.0
+    created: "2022-09-27T22:23:22.186170496Z"
+    description: A Helm chart for Kubernetes which installs the Fastly Controller (https://github.com/amazeeio/fastly-controller).
+    digest: 5504ef89dd6dabc56ff2816254fd73918c4faa13d319e4010d3ee7cbe79c172b
+    home: https://github.com/amazeeio/charts
+    icon: https://raw.githubusercontent.com/amazeeio/charts/main/icon.png
+    kubeVersion: '>= 1.22.0-0'
+    maintainers:
+    - email: ben.jackson@amazee.io
+      name: shreddedbacon
+      url: https://amazee.io
+    - email: scott.leggett@amazee.io
+      name: smlx
+      url: https://amazee.io
+    name: fastly-controller
+    type: application
+    urls:
+    - https://github.com/amazeeio/charts/releases/download/fastly-controller-0.3.0/fastly-controller-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
     appVersion: v0.2.1
     created: "2022-05-05T09:55:57.839019172Z"
     description: A Helm chart for Kubernetes which installs the Fastly Controller (https://github.com/amazeeio/fastly-controller).
