@@ -75,17 +75,18 @@ templates:
     {{end}}
 
 idling:
-  # dryRun: false
-  # prometheusEndpoint: "http://monitoring-kube-prometheus-prometheus.monitoring.svc:9090"
-  # prometheusCheckInterval: "4h"
-  # podCheckInterval: 4
-  # enableCLIIdler: true
-  # enableServiceIdler: true
-  # cliCron: "5,35 * * * *"
-  # serviceCron: "0 */4 * * *"
-  # skipHitCheck: false
+  enabled: false
+  dryRun: false
+  prometheusEndpoint: "http://monitoring-kube-prometheus-prometheus.monitoring.svc:9090"
+  prometheusCheckInterval: "4h"
+  podCheckInterval: 4
+  enableCLIIdler: true
+  enableServiceIdler: true
+  cliCron: "5,35 * * * *"
+  serviceCron: "0 */4 * * *"
+  skipHitCheck: false
   # the length of time to display the loading page when unidling a namespace
-  # refreshInterval: 30
+  refreshInterval: 30
 
 customSelectors:
   enabled: false
