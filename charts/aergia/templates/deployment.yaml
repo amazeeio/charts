@@ -60,17 +60,27 @@ spec:
             {{- end }}
           env:
           {{- if .Values.idling.enabled }}
+          {{- with .Values.idling.enableServiceIdler }}
           - name: ENABLE_SERVICE_IDLER
-            value: {{ .Values.idling.enableServiceIdler | quote }}
+            value: {{ . | quote }}
+          {{- end }}
+          {{- with .Values.idling.enableCLIIdler }}
           - name: ENABLE_CLI_IDLER
-            value: {{ .Values.idling.enableCLIIdler | quote }}
+            value: {{ . | quote }}
+          {{- end }}
+          {{- with .Values.idling.dryRun }}
           - name: DRY_RUN
-            value: {{ .Values.idling.dryRun | quote }}
+            value: {{ . | quote }}
+          {{- end }}
           {{- else }}
+          - name: ENABLE_SERVICE_IDLER
+            value: "false"
+          - name: ENABLE_CLI_IDLER
+            value: "false"
           {{- end }}
           {{- if .Values.templates.enabled}}
-            - name: ERROR_FILES_PATH
-              value: "/templates"
+          - name: ERROR_FILES_PATH
+            value: "/templates"
           {{- end}}
           {{- if .Values.customSelectors.enabled }}
           - name: SELECTORS_YAML_FILE
