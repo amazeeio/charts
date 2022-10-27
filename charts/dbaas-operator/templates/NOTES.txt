@@ -1,1 +1,0 @@
-DBaaS operator has been installed.

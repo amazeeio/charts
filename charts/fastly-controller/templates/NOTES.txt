@@ -1,1 +1,0 @@
-Fastly controller has been installed.

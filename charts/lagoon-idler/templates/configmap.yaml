@@ -1,9 +1,0 @@
-{{- if .Values.customSelectors.enabled }}
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: {{ include "lagoon-idler.fullname" . }}-selectors
-data:
-  selectors.yaml: |
-    {{ .Values.customSelectors.selectors | indent 4 }}
-{{- end }}
