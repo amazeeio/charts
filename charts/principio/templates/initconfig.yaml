@@ -1,0 +1,13 @@
+{{- range $configName, $initConfig := .Values.initConfigs }}
+---
+kind: InitConfig
+apiVersion: init.amazee.io/v1alpha1
+metadata:
+  name: {{ $configName }}
+spec:
+  initLabels:
+    matchExpressions:
+      {{- toYaml $initConfig.matchExpressions | nindent 6 }}
+  initItems:
+    {{- toYaml $initConfig.initItems | nindent 4 }}
+{{- end }}

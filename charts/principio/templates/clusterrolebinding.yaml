@@ -1,0 +1,29 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "principio.fullname" . }}-manager
+  labels:
+    {{- include "principio.labels" . | nindent 4 }}
+subjects:
+- kind: ServiceAccount
+  name: {{ include "principio.serviceAccountName" . }}
+  namespace: {{ .Release.Namespace | quote }}
+roleRef:
+  kind: ClusterRole
+  name: {{ include "principio.fullname" . }}-manager
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "principio.fullname" . }}-proxy
+  labels:
+    {{- include "principio.labels" . | nindent 4 }}
+subjects:
+- kind: ServiceAccount
+  name: {{ include "principio.serviceAccountName" . }}
+  namespace: {{ .Release.Namespace | quote }}
+roleRef:
+  kind: ClusterRole
+  name: {{ include "principio.fullname" . }}-proxy
+  apiGroup: rbac.authorization.k8s.io

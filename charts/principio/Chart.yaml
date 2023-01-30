@@ -1,0 +1,16 @@
+apiVersion: v2
+name: principio
+description:
+  A Helm chart for Kubernetes which installs principio
+  (https://github.com/amazeeio/principio).
+
+maintainers:
+- name: shreddedbacon
+  email: ben.jackson@amazee.io
+  url: https://amazee.io
+
+type: application
+
+version: 0.0.2
+
+appVersion: v0.1.0
