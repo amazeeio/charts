@@ -11,6 +11,11 @@ maintainers:
 
 type: application
 
-version: 0.1.1
+version: 0.1.2
 
-appVersion: v0.3.3
+appVersion: v0.3.4
+
+annotations:
+  artifacthub.io/changes: |
+    - kind: changed
+      description: update lagoon-idler appVersion to v0.3.4
