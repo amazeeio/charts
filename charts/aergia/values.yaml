@@ -62,6 +62,16 @@ templates:
     </body>
     </html>
     {{end}}
+  forced: |
+    {{define "base"}}
+    <html>
+    <head>
+    </head>
+    <body>
+    {{ .ErrorCode }} {{ .ErrorMessage }}
+    </body>
+    </html>
+    {{end}}
   unidle: |
     {{define "base"}}
     <html>
