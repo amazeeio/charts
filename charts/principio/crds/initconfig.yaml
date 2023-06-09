@@ -37,6 +37,8 @@ spec:
               initItems:
                 items:
                   type: object
+                  x-kubernetes-embedded-resource: true
+                  x-kubernetes-preserve-unknown-fields: true
                 type: array
               initLabels:
                 description: A label selector is a label query over a set of resources.
