@@ -1,22 +1,59 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "aergia.fullname" . }}-lists
+data:
+  {{- if .Values.unidling.ipAllowList}}
+  allowedips: |
+    {{- range .Values.unidling.ipAllowList }}
+    {{ . }}
+    {{- end}}
+  {{- end}}
+  {{- if .Values.unidling.ipBlockList}}
+  blockedips: |
+    {{- range .Values.unidling.ipBlockList }}
+    {{ . }}
+    {{- end}}
+  {{- end}}
+  {{- if .Values.unidling.agentAllowList}}
+  allowedagents: |
+    {{- range .Values.unidling.agentAllowList }}
+    {{ . }}
+    {{- end}}
+  {{- end}}
+  {{- if .Values.unidling.agentBlockList}}
+  blockedagents: |
+    {{- range .Values.unidling.agentBlockList }}
+    {{ . }}
+    {{- end}}
+  {{- end}}
 {{- if .Values.templates.enabled }}
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ include "aergia.fullname" . }}-templates
 data:
+{{- if .Values.templates.error}}
   error.html: |
 {{ .Values.templates.error | indent 4 }}
+{{- if .Values.templates.forced}}
+{{- end}}
   forced.html: |
 {{ .Values.templates.forced | indent 4 }}
+{{- if .Values.templates.unidle}}
+{{- end}}
   unidle.html: |
 {{ .Values.templates.unidle | indent 4 }}
 {{- end}}
+{{- end}}
 {{- if .Values.customSelectors.enabled }}
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ include "aergia.fullname" . }}-selectors
 data:
   selectors.yaml: |
-    {{ .Values.customSelectors.selectors | indent 4 }}
+{{ .Values.customSelectors.selectors  | indent 4}}
 {{- end }}

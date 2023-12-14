@@ -1,1 +1,22 @@
 # CI uses default values
+unidling:
+  verifyRequests:
+    enabled: true
+    secret: super-secret-string
+  ipAllowList:
+    - 1.2.3.4
+  ipBlockList:
+    - 1.2.3.5
+    - 4.3.2.1
+  agentAllowList:
+    - "@(example).com.?$"
+  agentBlockList:
+    - "@(example).test.?$"
+    - "@(internal).test.?$"
+customSelectors:
+  enabled: true
+  selectors: |-
+    servicedeployments: abc
+    clideployments: abc
+templates:
+  enabled: true
