@@ -8,15 +8,19 @@ maintainers:
 - name: shreddedbacon
   email: ben.jackson@amazee.io
   url: https://amazee.io
-kubeVersion: ">= 1.19.0-0"
+kubeVersion: ">= 1.23.0-0"
 
 type: application
 
-version: 0.4.0
+version: 0.5.0
 
-appVersion: v0.2.0
+appVersion: v0.3.0
 
 annotations:
   artifacthub.io/changes: |
     - kind: changed
-      description: update aergia-controller appVersion to v0.2.0
+      description: update aergia-controller appVersion to v0.3.0
+    - kind: changed
+      description: added configmap for setting ip and useragent allow and block lists
+    - kind: changed
+      description: minimum kubernetes version to 1.23.0

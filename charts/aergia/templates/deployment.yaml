@@ -90,16 +90,53 @@ spec:
             - name: {{ .name }}
               value: {{ .value | quote }}
           {{- end }}
+          {{- if .Values.unidling.verifyRequests.enabled }}
+          envFrom:
+            - secretRef:
+                name: {{ include "aergia.fullname" . }}
+          {{- end }}
           ports:
             - containerPort: 5000
               name: backend
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
-          {{- if .Values.templates.enabled}}
-            - name: {{ include "aergia.fullname" . }}-templates
-              mountPath: "/templates"
+          {{- if .Values.unidling.ipAllowList}}
+            - name: {{ include "aergia.fullname" . }}-allowedips
+              mountPath: "/lists/allowedips"
               readOnly: true
+          {{- end}}
+          {{- if .Values.unidling.ipBlockList}}
+            - name: {{ include "aergia.fullname" . }}-blockedips
+              mountPath: "/lists/blockedips"
+              readOnly: true
+          {{- end}}
+          {{- if .Values.unidling.agentAllowList}}
+            - name: {{ include "aergia.fullname" . }}-allowedagents
+              mountPath: "/lists/allowedagents"
+              readOnly: true
+          {{- end}}
+          {{- if .Values.unidling.agentBlockList}}
+            - name: {{ include "aergia.fullname" . }}-blockedagents
+              mountPath: "/lists/blockedagents"
+              readOnly: true
+          {{- end}}
+          {{- if .Values.templates.enabled}}
+          {{- if .Values.templates.error}}
+            - name: {{ include "aergia.fullname" . }}-error
+              mountPath: "/templates/error.html"
+              readOnly: true
+          {{- end}}
+          {{- if .Values.templates.forced}}
+            - name: {{ include "aergia.fullname" . }}-forced
+              mountPath: "/templates/forced.html"
+              readOnly: true
+          {{- end}}
+          {{- if .Values.templates.unidle}}
+            - name: {{ include "aergia.fullname" . }}-unidle
+              mountPath: "/templates/unidle.html"
+              readOnly: true
+          {{- end}}
           {{- end}}
           {{- if .Values.customSelectors.enabled }}
             - name: {{ include "aergia.fullname" . }}-selectors
@@ -107,23 +144,71 @@ spec:
               readOnly: true
           {{- end }}
       volumes:
+      {{- if .Values.unidling.ipAllowList}}
+        - name: {{ include "aergia.fullname" . }}-allowedips
+          configMap:
+            name: {{ include "aergia.fullname" . }}-lists
+            items:
+              - key: "allowedips"
+                path: "allowedips"
+      {{- end }}
+      {{- if .Values.unidling.ipBlockList}}
+        - name: {{ include "aergia.fullname" . }}-blockedips
+          configMap:
+            name: {{ include "aergia.fullname" . }}-lists
+            items:
+              - key: "blockedips"
+                path: "blockedips"
+      {{- end }}
+      {{- if .Values.unidling.agentAllowList}}
+        - name: {{ include "aergia.fullname" . }}-allowedagents
+          configMap:
+            name: {{ include "aergia.fullname" . }}-lists
+            items:
+              - key: "allowedagents"
+                path: "allowedagents"
+      {{- end }}
+      {{- if .Values.unidling.agentBlockList}}
+        - name: {{ include "aergia.fullname" . }}-blockedagents
+          configMap:
+            name: {{ include "aergia.fullname" . }}-lists
+            items:
+              - key: "blockedagents"
+                path: "blockedagents"
+      {{- end }}
       {{- if .Values.templates.enabled}}
-        - name: {{ include "aergia.fullname" . }}-templates
+      {{- if .Values.templates.error}}
+        - name: {{ include "aergia.fullname" . }}-error
           configMap:
             name: {{ include "aergia.fullname" . }}-templates
             items:
-            - key: "error.html"
-              path: "error.html"
-            - key: "unidle.html"
-              path: "unidle.html"
+              - key: "error.html"
+                path: "error.html"
+      {{- end }}
+      {{- if .Values.templates.forced}}
+        - name: {{ include "aergia.fullname" . }}-forced
+          configMap:
+            name: {{ include "aergia.fullname" . }}-templates
+            items:
+              - key: "forced.html"
+                path: "forced.html"
+      {{- end }}
+      {{- if .Values.templates.unidle}}
+        - name: {{ include "aergia.fullname" . }}-unidle
+          configMap:
+            name: {{ include "aergia.fullname" . }}-templates
+            items:
+              - key: "unidle.html"
+                path: "unidle.html"
+      {{- end }}
       {{- end}}
       {{- if .Values.customSelectors.enabled }}
         - name: {{ include "aergia.fullname" . }}-selectors
           configMap:
             name: {{ include "aergia.fullname" . }}-selectors
             items:
-            - key: "selectors.yaml"
-              path: "selectors.yaml"
+              - key: "selectors.yaml"
+                path: "selectors.yaml"
       {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
