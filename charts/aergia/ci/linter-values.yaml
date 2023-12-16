@@ -20,3 +20,6 @@ customSelectors:
     clideployments: abc
 templates:
   enabled: true
+
+metrics:
+  enabled: false

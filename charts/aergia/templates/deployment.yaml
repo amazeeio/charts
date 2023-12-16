@@ -98,6 +98,8 @@ spec:
           ports:
             - containerPort: 5000
               name: backend
+            - containerPort: 9912
+              name: metrics
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:

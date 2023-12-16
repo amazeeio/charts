@@ -30,3 +30,21 @@ spec:
       name: backend
   selector:
     {{- include "aergia.selectorLabels" . | nindent 4 }}
+{{- if .Values.metrics.enabled }}
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ include "aergia.fullname" . }}-metrics
+  labels:
+    {{- include "aergia.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.backend.service.type }}
+  ports:
+    - name: metrics
+      protocol: TCP
+      port: 9912
+      targetPort: metrics
+  selector:
+    {{- include "aergia.selectorLabels" . | nindent 4 }}
+{{- end }}
