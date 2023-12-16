@@ -137,6 +137,10 @@ customSelectors:
   #           - "production"
   #           - "development"
 
+metrics:
+  enabled: true
+  interval: 30s
+
 servicemonitor:
   enabled: false
   spec:

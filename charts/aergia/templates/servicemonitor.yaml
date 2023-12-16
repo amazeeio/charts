@@ -1,5 +1,20 @@
-
+{{- if .Values.metrics.enabled }}
+kind: ServiceMonitor
+apiVersion: monitoring.coreos.com/v1
+metadata:
+  name: {{ include "aergia.fullname" . }}-metrics
+  labels:
+    {{- include "aergia.labels" . | nindent 4 }}
+spec:
+  endpoints:
+    - interval: {{ .Values.metrics.interval }}
+      port: metrics
+  selector:
+    matchLabels:
+      {{- include "aergia.labels" . | nindent 6 }}
+{{- end }}
 {{- if .Values.servicemonitor.enabled }}
+---
 kind: ServiceMonitor
 apiVersion: monitoring.coreos.com/v1
 metadata:
