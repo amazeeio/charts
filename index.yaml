@@ -4,6 +4,27 @@ entries:
   - annotations:
       artifacthub.io/changes: |
         - kind: changed
+          description: update aergia-controller appVersion to v0.3.2
+    apiVersion: v2
+    appVersion: v0.3.2
+    created: "2023-12-27T04:46:57.694008214Z"
+    description: A Helm chart for Kubernetes which installs Aergia, a controller that allows simple scaling from and to zero.
+    digest: 167f6045bb7105ef4d8de0fe6da12eaf414339f270cd5d4b03ce3d843b6d71a9
+    home: https://github.com/amazeeio/charts
+    icon: https://raw.githubusercontent.com/amazeeio/charts/main/icon.png
+    kubeVersion: '>= 1.23.0-0'
+    maintainers:
+    - email: ben.jackson@amazee.io
+      name: shreddedbacon
+      url: https://amazee.io
+    name: aergia
+    type: application
+    urls:
+    - https://github.com/amazeeio/charts/releases/download/aergia-0.5.2/aergia-0.5.2.tgz
+    version: 0.5.2
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
           description: update aergia-controller appVersion to v0.3.1
         - kind: changed
           description: added metrics endpoint
