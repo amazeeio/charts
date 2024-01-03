@@ -106,37 +106,44 @@ spec:
           {{- if .Values.unidling.ipAllowList}}
             - name: {{ include "aergia.fullname" . }}-allowedips
               mountPath: "/lists/allowedips"
+              subPath: "allowedips"
               readOnly: true
           {{- end}}
           {{- if .Values.unidling.ipBlockList}}
             - name: {{ include "aergia.fullname" . }}-blockedips
               mountPath: "/lists/blockedips"
+              subPath: "blockedips"
               readOnly: true
           {{- end}}
           {{- if .Values.unidling.agentAllowList}}
             - name: {{ include "aergia.fullname" . }}-allowedagents
               mountPath: "/lists/allowedagents"
+              subPath: "allowedagents"
               readOnly: true
           {{- end}}
           {{- if .Values.unidling.agentBlockList}}
             - name: {{ include "aergia.fullname" . }}-blockedagents
               mountPath: "/lists/blockedagents"
+              subPath: "blockedagents"
               readOnly: true
           {{- end}}
           {{- if .Values.templates.enabled}}
           {{- if .Values.templates.error}}
             - name: {{ include "aergia.fullname" . }}-error
               mountPath: "/templates/error.html"
+              subPath: "error.html"
               readOnly: true
           {{- end}}
           {{- if .Values.templates.forced}}
             - name: {{ include "aergia.fullname" . }}-forced
               mountPath: "/templates/forced.html"
+              subPath: "forced.html"
               readOnly: true
           {{- end}}
           {{- if .Values.templates.unidle}}
             - name: {{ include "aergia.fullname" . }}-unidle
               mountPath: "/templates/unidle.html"
+              subPath: "unidle.html"
               readOnly: true
           {{- end}}
           {{- end}}
