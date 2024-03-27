@@ -5,18 +5,17 @@ description:
   (https://github.com/amazeeio/fastly-controller).
 home: https://github.com/amazeeio/charts
 icon: https://raw.githubusercontent.com/amazeeio/charts/main/icon.png
-maintainers:
-- name: shreddedbacon
-  email: ben.jackson@amazee.io
-  url: https://amazee.io
-- name: smlx
-  email: scott.leggett@amazee.io
-  url: https://amazee.io
+deprecated: true
 
 kubeVersion: ">= 1.22.0-0"
 
 type: application
 
-version: 0.3.1
+version: 0.4.0
 
 appVersion: v0.3.1
+
+annotations:
+  artifacthub.io/changes: |
+    - kind: changed
+      description: deprecated chart

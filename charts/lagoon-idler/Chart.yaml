@@ -4,18 +4,15 @@ description:
   A Helm chart for Kubernetes which installs Lagoon Idler.
 home: https://github.com/amazeeio/charts
 icon: https://raw.githubusercontent.com/amazeeio/charts/main/icon.png
-maintainers:
-- name: shreddedbacon
-  email: ben.jackson@amazee.io
-  url: https://amazee.io
+deprecated: true
 
 type: application
 
-version: 0.1.2
+version: 0.2.0
 
 appVersion: v0.3.4
 
 annotations:
   artifacthub.io/changes: |
     - kind: changed
-      description: update lagoon-idler appVersion to v0.3.4
+      description: deprecated chart
