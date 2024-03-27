@@ -422,6 +422,24 @@ entries:
     - https://github.com/amazeeio/charts/releases/download/dbaas-operator-0.2.0/dbaas-operator-0.2.0.tgz
     version: 0.2.0
   dioscuri:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: deprecated chart
+    apiVersion: v2
+    appVersion: v0.2.0
+    created: "2024-03-27T01:06:18.012208006Z"
+    deprecated: true
+    description: A Helm chart for Kubernetes which installs Dioscuri (https://github.com/amazeeio/dioscuri).
+    digest: 19b9298baa16a53cdcfebf6d4efe8b7b3dfd53fce4bf9475b1df1a295e997cdd
+    home: https://github.com/amazeeio/charts
+    icon: https://raw.githubusercontent.com/amazeeio/charts/main/icon.png
+    kubeVersion: '>= 1.19.0-0'
+    name: dioscuri
+    type: application
+    urls:
+    - https://github.com/amazeeio/charts/releases/download/dioscuri-0.5.0/dioscuri-0.5.0.tgz
+    version: 0.5.0
   - apiVersion: v2
     appVersion: v0.2.0
     created: "2022-05-03T04:30:34.88355419Z"
@@ -576,6 +594,24 @@ entries:
     - https://github.com/amazeeio/charts/releases/download/dioscuri-0.2.0/dioscuri-0.2.0.tgz
     version: 0.2.0
   fastly-controller:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: deprecated chart
+    apiVersion: v2
+    appVersion: v0.3.1
+    created: "2024-03-27T01:06:18.179532978Z"
+    deprecated: true
+    description: A Helm chart for Kubernetes which installs the Fastly Controller (https://github.com/amazeeio/fastly-controller).
+    digest: 4f5d139f99bd1cd0e05e94a4b201775fcc6090bf556f67d6a1689b4c0cd31b6b
+    home: https://github.com/amazeeio/charts
+    icon: https://raw.githubusercontent.com/amazeeio/charts/main/icon.png
+    kubeVersion: '>= 1.22.0-0'
+    name: fastly-controller
+    type: application
+    urls:
+    - https://github.com/amazeeio/charts/releases/download/fastly-controller-0.4.0/fastly-controller-0.4.0.tgz
+    version: 0.4.0
   - apiVersion: v2
     appVersion: v0.3.1
     created: "2022-09-27T23:12:06.02761583Z"
@@ -731,6 +767,23 @@ entries:
     - https://github.com/amazeeio/charts/releases/download/fastly-controller-0.1.0/fastly-controller-0.1.0.tgz
     version: 0.1.0
   lagoon-idler:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: deprecated chart
+    apiVersion: v2
+    appVersion: v0.3.4
+    created: "2024-03-27T01:06:18.363503593Z"
+    deprecated: true
+    description: A Helm chart for Kubernetes which installs Lagoon Idler.
+    digest: ddbac0f4a86071cb4f16bcc478d60b7476114e322e05e9feddce7013fd0aaa94
+    home: https://github.com/amazeeio/charts
+    icon: https://raw.githubusercontent.com/amazeeio/charts/main/icon.png
+    name: lagoon-idler
+    type: application
+    urls:
+    - https://github.com/amazeeio/charts/releases/download/lagoon-idler-0.2.0/lagoon-idler-0.2.0.tgz
+    version: 0.2.0
   - annotations:
       artifacthub.io/changes: |
         - kind: changed
