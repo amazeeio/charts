@@ -11,11 +11,11 @@ kubeVersion: ">= 1.23.0-0"
 
 type: application
 
-version: 0.5.3
+version: 0.6.0
 
-appVersion: v0.3.2
+appVersion: v0.4.1
 
 annotations:
   artifacthub.io/changes: |
     - kind: changed
-      description: update aergia-controller appVersion to v0.3.2
+      description: update aergia-controller appVersion to v0.4.1
