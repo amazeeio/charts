@@ -43,9 +43,9 @@ affinity: {}
 # this is a sidecar in the same pod as the principio container
 kubeRBACProxy:
   image:
-    repository: gcr.io/kubebuilder/kube-rbac-proxy
+    repository: bitnami/kube-rbac-proxy
     pullPolicy: IfNotPresent
-    tag: v0.4.1
+    tag: 0.18.2
 
   securityContext: {}
 

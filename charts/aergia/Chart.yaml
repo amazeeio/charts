@@ -11,11 +11,11 @@ kubeVersion: ">= 1.23.0-0"
 
 type: application
 
-version: 0.6.1
+version: 0.6.2
 
 appVersion: v0.4.2
 
 annotations:
   artifacthub.io/changes: |
     - kind: changed
-      description: update aergia-controller appVersion to v0.4.2
+      description: interim use of bitnami/kube-rbac-proxy to replace deprecated kubebuilder version

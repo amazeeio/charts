@@ -117,9 +117,9 @@ affinity: {}
 # this sidecar runs in the same pod as dbaas-operator
 kubeRBACProxy:
   image:
-    repository: gcr.io/kubebuilder/kube-rbac-proxy
+    repository: bitnami/kube-rbac-proxy
     pullPolicy: IfNotPresent
-    tag: v0.4.1
+    tag: 0.18.2
 
   securityContext: {}
 
