@@ -40,6 +40,9 @@ spec:
             - "--service-idler-cron={{ .Values.idling.serviceCron }}"
             - "--refresh-interval={{ .Values.idling.refreshInterval }}"
             {{- end }}
+            {{- with .Values.defaultHTTPResponseCode }}
+            - "--default-http-response-code={{ . }}"
+            {{- end }}
             {{- with .Values.extraArgs }}
             {{- toYaml . | nindent 12 }}
             {{- end }}
