@@ -9,6 +9,9 @@ nameOverride: ""
 
 extraArgs:
 
+# This can be used to change the default http response code from the default 404
+# defaultHTTPResponseCode: 404
+
 serviceAccount:
   # Annotations to add to the service account
   annotations: {}

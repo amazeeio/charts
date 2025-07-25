@@ -11,11 +11,13 @@ kubeVersion: ">= 1.23.0-0"
 
 type: application
 
-version: 0.7.2
+version: 0.7.3
 
-appVersion: v0.5.2
+appVersion: v0.5.3
 
 annotations:
   artifacthub.io/changes: |
     - kind: changed
-      description: update aergia-controller to v0.5.2
+      description: update aergia-controller to v0.5.3
+    - kind: changed
+      description: add support to change default response code
