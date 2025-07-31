@@ -119,7 +119,7 @@ kubeRBACProxy:
   image:
     repository: quay.io/brancz/kube-rbac-proxy
     pullPolicy: IfNotPresent
-    tag: 0.18.2
+    tag: v0.18.2
 
   securityContext: {}
 
