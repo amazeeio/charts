@@ -495,6 +495,26 @@ entries:
   dbaas-operator:
   - apiVersion: v2
     appVersion: v0.3.1
+    created: "2025-07-31T06:37:35.660829324Z"
+    description: A Helm chart for Kubernetes which installs the DBaaS Operator (https://github.com/amazeeio/dbaas-operator).
+    digest: 4e9b864b9cf889eca6a0f5da39d0c1119a2e6bf38839af7effa989f9649e66fc
+    home: https://github.com/amazeeio/charts
+    icon: https://raw.githubusercontent.com/amazeeio/charts/main/icon.png
+    kubeVersion: '>= 1.19.0-0'
+    maintainers:
+    - email: ben.jackson@amazee.io
+      name: shreddedbacon
+      url: https://amazee.io
+    - email: scott.leggett@amazee.io
+      name: smlx
+      url: https://amazee.io
+    name: dbaas-operator
+    type: application
+    urls:
+    - https://github.com/amazeeio/charts/releases/download/dbaas-operator-0.3.3/dbaas-operator-0.3.3.tgz
+    version: 0.3.3
+  - apiVersion: v2
+    appVersion: v0.3.1
     created: "2025-07-27T23:41:07.75056775Z"
     description: A Helm chart for Kubernetes which installs the DBaaS Operator (https://github.com/amazeeio/dbaas-operator).
     digest: 6aba8376057222049ca8eac6941199efbaee0047c5725cec877dc5918197640e
