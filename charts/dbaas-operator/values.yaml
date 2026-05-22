@@ -71,8 +71,6 @@ mongodbProviders: {}
   #     tls: false
 
 extraArgs:
-- "--metrics-addr=127.0.0.1:8080"
-- "--enable-leader-election=true"
 
 # enable the providers
 # by default mariadb is enabled and the others are disabled
@@ -113,14 +111,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
-# this sidecar runs in the same pod as dbaas-operator
-kubeRBACProxy:
-  image:
-    repository: quay.io/brancz/kube-rbac-proxy
-    pullPolicy: IfNotPresent
-    tag: v0.18.2
-
-  securityContext: {}
-
-  resources: {}
