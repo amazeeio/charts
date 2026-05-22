@@ -538,6 +538,30 @@ entries:
   - annotations:
       artifacthub.io/changes: |
         - kind: changed
+          description: update dbaas-operator to v0.5.0
+    apiVersion: v2
+    appVersion: v0.5.0
+    created: "2026-05-22T09:04:50.706711459Z"
+    description: A Helm chart for Kubernetes which installs the DBaaS Operator (https://github.com/amazeeio/dbaas-operator).
+    digest: 6587d41b610ba11c87b59db8894829bbba2be1ddc6bd2481f5ee3f7d8dad8e58
+    home: https://github.com/amazeeio/charts
+    icon: https://raw.githubusercontent.com/amazeeio/charts/main/icon.png
+    kubeVersion: '>= 1.19.0-0'
+    maintainers:
+    - email: ben.jackson@amazee.io
+      name: shreddedbacon
+      url: https://amazee.io
+    - email: scott.leggett@amazee.io
+      name: smlx
+      url: https://amazee.io
+    name: dbaas-operator
+    type: application
+    urls:
+    - https://github.com/amazeeio/charts/releases/download/dbaas-operator-0.5.0/dbaas-operator-0.5.0.tgz
+    version: 0.5.0
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
           description: update dbaas-operator to v0.4.0
     apiVersion: v2
     appVersion: v0.4.0
