@@ -7,6 +7,15 @@ mariadbProviders:
     password: password
     port: '3306'
     user: root
+  development2:
+    disableProvisioning: true
+    environment: development
+    hostname: 172.17.0.2.nip.io
+    readReplicaHostnames:
+    - 172.17.0.2.nip.io
+    password: password
+    port: '3306'
+    user: root
 
 postgresqlProviders:
   development:
