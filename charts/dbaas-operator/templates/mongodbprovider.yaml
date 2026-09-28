@@ -6,6 +6,9 @@ metadata:
   name: {{ include "dbaas-operator.fullname" $ }}-{{ $providerName }}
   labels:
     {{- include "dbaas-operator.labels" $ | nindent 4 }}
+    {{- if $providerConfig.disableProvisioning}}
+    dbaas.amazee.io/no-provision: 'true'
+    {{- end }}
 spec:
   environment: {{ required (printf "environment is required for %s" $providerName) $providerConfig.environment | quote }}
   hostname: {{ required (printf "hostname is required for %s" $providerName) $providerConfig.hostname | quote }}
